@@ -1,0 +1,29 @@
+<ion-menu [content]="content">
+  <ion-header no-border>
+    <img src="assets/senter-logo.png" alt="IMAGE NOT FOUND">
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button  menuClose ion-item (click)="openPage('HOME')">
+        HOME
+      </button>
+      <button  menuClose ion-item (click)="openPage('PIVOTS')">
+        PIVOTS
+      </button>
+      <button menuClose ion-item (click)="openPage('PUMPS')">
+        PUMPS
+      </button>
+      <button ion-item (click)="openPage('HELP')">
+        HELP
+      </button>
+      <button ion-item (click)="openPage('MY DETAILS')">
+        MY DETAILS
+      </button>
+      <button ion-item (click)="openPage('LOGOUT')">
+        LOGOUT
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
