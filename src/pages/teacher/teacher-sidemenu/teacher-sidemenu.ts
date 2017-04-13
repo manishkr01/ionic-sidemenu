@@ -11,16 +11,25 @@ import { SplashScreen } from '@ionic-native/splash-screen';
  * on Ionic pages and navigation.
  */
 @Component({
-  selector: 'menu-list',
+  selector: 'page-teacher-sidemenu',
   templateUrl: 'teacher-sidemenu.html',
 })
 export class TeacherSidemenu {
-@ViewChild('content') nav: NavController;
-rootPage:any;
-  constructor(public platform: Platform, public statusBar: StatusBar, 
-    public splashScreen: SplashScreen, public menuCtrl: MenuController) {
+  @ViewChild(Nav) nav: Nav;
+
+  rootPage: any = TeacherHome;
+
+  pages: Array<{title: string, component: any}>;
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-    this.rootPage = TeacherHome;
+
+    // used for an example of ngFor and navigation
+    this.pages = [
+      { title: 'Home', component: TeacherHome },
+      { title: 'List', component: TeacherHomework }
+    ];
+
   }
 
   initializeApp() {
@@ -32,10 +41,9 @@ rootPage:any;
     });
   }
 
-  // openPage(page) {
-  //   // Reset the content nav to have just this page
-  //   // we wouldn't want the back button to show in this scenario
-  //   console.log(page);
-  //   this.nav.setRoot(page.component);
-  // }
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(page.component);
+  }
 }
